@@ -62,6 +62,12 @@
       background-size: 400% 400%;
       animation: gradientWaves 16s ease infinite;
       min-height: 100vh;
+      overflow-x: hidden;
+    }
+
+    /* Bloqueia rolagem enquanto a abertura estiver ativa */
+    body.no-scroll {
+      overflow: hidden;
     }
 
     body.dark-mode {
@@ -79,6 +85,72 @@
       0% { background-position: 0% 50%; }
       50% { background-position: 100% 50%; }
       100% { background-position: 0% 50%; }
+    }
+
+    /* --- TELA DE ABERTURA (SPLASH SCREEN) --- */
+    #splash-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100vh;
+      z-index: 9999;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #334155, #1e293b);
+      color: #ffffff;
+      text-align: center;
+      padding: 2rem;
+      transition: transform 0.8s cubic-bezier(0.77, 0, 0.175, 1), opacity 0.8s ease;
+    }
+
+    #splash-screen.fechado {
+      transform: translateY(-100%);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .splash-content {
+      max-width: 600px;
+      animation: fadeIn 1s ease-out;
+    }
+
+    .splash-content h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      letter-spacing: 1px;
+    }
+
+    .splash-content p {
+      font-size: 1.2rem;
+      margin-bottom: 2rem;
+      color: #cbd5e1;
+    }
+
+    .btn-entrar {
+      display: inline-block;
+      background-color: var(--accent-color);
+      color: #ffffff;
+      padding: 16px 36px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      border: none;
+      border-radius: 50px;
+      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(16, 185, 129, 0.4);
+      transition: transform 0.2s ease, background-color 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn-entrar:hover {
+      background-color: #059669;
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(16, 185, 129, 0.6);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: scale(0.95); }
+      to { opacity: 1; transform: scale(1); }
     }
 
     /* Barra de Acessibilidade */
@@ -380,6 +452,9 @@
 
     /* Responsividade */
     @media (max-width: 768px) {
+      .splash-content h1 {
+        font-size: 2rem;
+      }
       .hero-section {
         flex-direction: column;
         margin: 1rem;
@@ -399,7 +474,15 @@
     }
   </style>
 </head>
-<body>
+<body class="no-scroll">
+
+  <div id="splash-screen">
+    <div class="splash-content">
+      <h1>Escola Plural</h1>
+      <p>Um espaço de conscientização, respeito, empatia e combate ao preconceito.</p>
+      <button class="btn-entrar" onclick="entrarNoPortal()">Entrar no Portal</button>
+    </div>
+  </div>
 
   <header>
     <div class="accessibility-bar">
@@ -552,6 +635,13 @@
   <button id="btn-back-to-top" type="button" title="Voltar ao topo">↑</button>
 
   <script>
+    // --- 0. Função para Fechar a Abertura ---
+    function entrarNoPortal() {
+      const splash = document.getElementById('splash-screen');
+      splash.classList.add('fechado');
+      document.body.classList.remove('no-scroll');
+    }
+
     // --- 1. Acessibilidade (Modo Escuro, Alto Contraste e Fonte) ---
     const btnDark = document.getElementById('btn-dark');
     const btnContrast = document.getElementById('btn-contrast');

@@ -12,27 +12,27 @@
       font-size: 100%;
     }
 
-    /* Variáveis e Temas */
+    /* Nova Paleta de Cores Neutras e Elegantes */
     :root {
-      --bg-color: #f0f4f8;
-      --text-color: #2c3e50;
-      --primary-color: #3b719f;
-      --primary-hover: #2a5275;
-      --card-bg: rgba(255, 255, 255, 0.92);
-      --border-color: #d1d9e0;
-      --accent-color: #27ae60;
-      --error-color: #e74c3c;
+      --bg-color: #f3f4f6;
+      --text-color: #1f2937;
+      --primary-color: #475569; /* Azul Ardósia Escuro */
+      --primary-hover: #334155;
+      --card-bg: rgba(255, 255, 255, 0.94);
+      --border-color: #e2e8f0;
+      --accent-color: #10b981; /* Verde Menta */
+      --error-color: #ef4444;   /* Vermelho Coral */
       --font-scale: 1rem;
     }
 
     /* Modo Escuro */
     body.dark-mode {
-      --bg-color: #1a1e24;
-      --text-color: #e9ecef;
-      --primary-color: #5c82a6;
-      --primary-hover: #7b9ebb;
-      --card-bg: rgba(26, 32, 44, 0.92);
-      --border-color: #2d3748;
+      --bg-color: #111827;
+      --text-color: #f3f4f6;
+      --primary-color: #94a3b8;
+      --primary-hover: #cbd5e1;
+      --card-bg: rgba(31, 41, 55, 0.94);
+      --border-color: #374151;
     }
 
     /* Alto Contraste */
@@ -52,20 +52,20 @@
       transition: color 0.3s ease;
     }
 
-    /* Fundo Animado em Ondas Neutras */
+    /* Fundo Animado com Gradiente Ondulado Neutro */
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
       color: var(--text-color);
       font-size: var(--font-scale);
       line-height: 1.6;
-      background: linear-gradient(-45deg, #e2e8f0, #cbd5e1, #f1f5f9, #e0e7ff);
+      background: linear-gradient(-45deg, #e5e7eb, #d1d5db, #f3f4f6, #e0e7ff);
       background-size: 400% 400%;
       animation: gradientWaves 16s ease infinite;
       min-height: 100vh;
     }
 
     body.dark-mode {
-      background: linear-gradient(-45deg, #0f172a, #1e293b, #334155, #1e1b4b);
+      background: linear-gradient(-45deg, #111827, #1f2937, #374151, #1e1b4b);
       background-size: 400% 400%;
       animation: gradientWaves 16s ease infinite;
     }
@@ -83,7 +83,7 @@
 
     /* Barra de Acessibilidade */
     .accessibility-bar {
-      background: #111;
+      background: #111827;
       padding: 8px 5%;
       display: flex;
       justify-content: flex-end;
@@ -91,16 +91,16 @@
     }
 
     .accessibility-bar button {
-      background: #333;
+      background: #374151;
       color: #fff;
-      border: 1px solid #555;
+      border: 1px solid #4b5563;
       padding: 4px 10px;
       cursor: pointer;
       border-radius: 4px;
     }
 
     .accessibility-bar button:hover {
-      background: #555;
+      background: #4b5563;
     }
 
     /* Header & Nav */
@@ -108,7 +108,7 @@
       position: sticky;
       top: 0;
       z-index: 1000;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
       background-color: var(--card-bg);
       backdrop-filter: blur(8px);
     }
@@ -155,7 +155,7 @@
       margin: 2rem auto;
       max-width: 1100px;
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
       border: 1px solid var(--border-color);
     }
 
@@ -182,7 +182,7 @@
       max-width: 100%;
       height: auto;
       border-radius: 12px;
-      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     }
 
     .section {
@@ -192,7 +192,7 @@
       background: var(--card-bg);
       backdrop-filter: blur(10px);
       border-radius: 12px;
-      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.04);
       border: 1px solid var(--border-color);
     }
 
@@ -255,7 +255,7 @@
     }
 
     .orientacoes-box {
-      background: rgba(255, 255, 255, 0.6);
+      background: rgba(255, 255, 255, 0.7);
       border: 1px solid var(--border-color);
       padding: 1.5rem;
       border-radius: 8px;
@@ -307,13 +307,13 @@
     }
 
     .feedback-box.correto {
-      background-color: rgba(39, 174, 96, 0.15);
+      background-color: rgba(16, 185, 129, 0.15);
       border-left: 4px solid var(--accent-color);
       color: var(--text-color);
     }
 
     .feedback-box.incorreto {
-      background-color: rgba(231, 76, 60, 0.15);
+      background-color: rgba(239, 68, 68, 0.15);
       border-left: 4px solid var(--error-color);
       color: var(--text-color);
     }
@@ -371,7 +371,7 @@
       color: #ffffff;
       font-size: 1.2rem;
       cursor: pointer;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+      box-shadow: 0 2px 8px rgba(0,0,0,0.15);
     }
 
     .hidden {

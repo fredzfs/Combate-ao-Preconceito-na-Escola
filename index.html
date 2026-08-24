@@ -1,33 +1,45 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Portal Convivência Escolar</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Escola Plural - Combate ao Preconceito</title>
+  
   <style>
+    /* Rolagem Suave */
+    html {
+      scroll-behavior: smooth;
+      font-size: 100%;
+    }
+
+    /* Variáveis e Temas */
     :root {
-      --bg-color: #0f172a;
-      --text-color: #f1f5f9;
-      --primary-color: #06b6d4;
-      --primary-hover: #0891b2;
-      --card-bg: rgba(15, 23, 42, 0.8);
-      --border-color: #1e293b;
-      --accent-color: #10b981;
-      --error-color: #ef4444;
+      --bg-color: #ffffff;
+      --bg-alt-color: #f4f6f8;
+      --text-color: #2c3e50;
+      --primary-color: #4a90e2;
+      --primary-hover: #357abd;
+      --card-bg: #ffffff;
+      --border-color: #e1e8ed;
+      --accent-color: #27ae60;
       --font-scale: 1rem;
     }
 
+    /* Modo Escuro */
     body.dark-mode {
-      --bg-color: #111827;
-      --text-color: #f3f4f6;
-      --primary-color: #94a3b8;
-      --primary-hover: #cbd5e1;
-      --card-bg: rgba(31, 41, 55, 0.94);
-      --border-color: #374151;
+      --bg-color: #1a1a2e;
+      --bg-alt-color: #16213e;
+      --text-color: #e9ecef;
+      --primary-color: #0f3460;
+      --primary-hover: #e94560;
+      --card-bg: #0f3460;
+      --border-color: #1f4068;
     }
 
+    /* Alto Contraste */
     body.high-contrast {
       --bg-color: #000000;
+      --bg-alt-color: #111111;
       --text-color: #ffff00;
       --primary-color: #ffff00;
       --primary-hover: #ffffff;
@@ -39,128 +51,20 @@
       box-sizing: border-box;
       margin: 0;
       padding: 0;
-      transition: color 0.3s ease, background-color 0.3s ease;
-    }
-
-    html {
-      scroll-behavior: smooth;
-      font-size: 100%;
+      transition: background-color 0.3s ease, color 0.3s ease;
     }
 
     body {
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background-color: var(--bg-color);
       color: var(--text-color);
       font-size: var(--font-scale);
       line-height: 1.6;
-      background: linear-gradient(-45deg, #0f172a, #1e293b, #0f172a, #1a1f35);
-      background-size: 400% 400%;
-      animation: gradientWaves 20s ease infinite;
-      min-height: 100vh;
-      overflow-x: hidden;
-      position: relative;
     }
 
-    @keyframes gradientWaves {
-      0% { background-position: 0% 50%; }
-      50% { background-position: 100% 50%; }
-      100% { background-position: 0% 50%; }
-    }
-
-    #splash-screen {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100vh;
-      z-index: 9999;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #0f172a 100%);
-      color: #ffffff;
-      text-align: center;
-      padding: 2rem;
-      transition: transform 0.8s ease, opacity 0.8s ease;
-    }
-
-    #splash-screen.fechado {
-      transform: translateY(-100%);
-      opacity: 0;
-      pointer-events: none;
-    }
-
-    .splash-content {
-      max-width: 600px;
-      background: rgba(15, 23, 42, 0.85);
-      backdrop-filter: blur(10px);
-      padding: 3rem 2rem;
-      border-radius: 20px;
-      border: 1px solid rgba(6, 182, 212, 0.3);
-      box-shadow: 0 8px 32px rgba(6, 182, 212, 0.2);
-    }
-
-    .splash-content h1 {
-      font-size: 2.5rem;
-      margin-bottom: 0.5rem;
-      background: linear-gradient(135deg, #06b6d4, #10b981);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-
-    .splash-subtitle {
-      font-size: 0.9rem;
-      color: #94a3b8;
-      margin-bottom: 1.5rem;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .splash-input-group {
-      margin-bottom: 1.5rem;
-      text-align: left;
-    }
-
-    .splash-input-group label {
-      display: block;
-      margin-bottom: 0.5rem;
-      color: #06b6d4;
-      font-weight: 600;
-    }
-
-    .splash-input-group input {
-      width: 100%;
-      padding: 12px 16px;
-      border: 2px solid rgba(6, 182, 212, 0.3);
-      border-radius: 10px;
-      background: rgba(30, 41, 59, 0.5);
-      color: #f1f5f9;
-      font-size: 1rem;
-    }
-
-    .btn-entrar {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
-      color: #ffffff;
-      padding: 14px 40px;
-      font-size: 1.1rem;
-      font-weight: bold;
-      border: none;
-      border-radius: 50px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-    }
-
-    .btn-entrar:hover:not(:disabled) {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 20px rgba(6, 182, 212, 0.6);
-    }
-
-    .btn-entrar:disabled {
-      opacity: 0.5;
-      cursor: not-allowed;
-    }
-
+    /* Barra de Acessibilidade */
     .accessibility-bar {
-      background: #0f172a;
+      background: #111;
       padding: 8px 5%;
       display: flex;
       justify-content: flex-end;
@@ -168,22 +72,24 @@
     }
 
     .accessibility-bar button {
-      background: #1e293b;
-      color: #06b6d4;
-      border: 1px solid #334155;
-      padding: 6px 12px;
+      background: #333;
+      color: #fff;
+      border: 1px solid #555;
+      padding: 4px 10px;
       cursor: pointer;
       border-radius: 4px;
-      font-weight: 600;
     }
 
+    .accessibility-bar button:hover {
+      background: #555;
+    }
+
+    /* Header & Nav */
     header {
       position: sticky;
       top: 0;
       z-index: 1000;
-      background-color: var(--card-bg);
-      backdrop-filter: blur(8px);
-      border-bottom: 1px solid var(--border-color);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
     }
 
     .navbar {
@@ -191,14 +97,14 @@
       justify-content: space-between;
       align-items: center;
       padding: 1rem 5%;
+      background-color: var(--card-bg);
+      border-bottom: 1px solid var(--border-color);
     }
 
     .logo {
       font-size: 1.4rem;
       font-weight: bold;
-      background: linear-gradient(135deg, #06b6d4, #10b981);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
+      color: var(--primary-color);
     }
 
     .nav-links {
@@ -213,108 +119,234 @@
       font-weight: 600;
     }
 
-    .hero-section, .section {
-      padding: 2.5rem 5%;
-      max-width: 1000px;
-      margin: 2rem auto;
-      background: rgba(15, 23, 42, 0.6);
-      backdrop-filter: blur(10px);
-      border-radius: 12px;
-      border: 1px solid rgba(6, 182, 212, 0.2);
+    .nav-links a:hover {
+      color: var(--primary-color);
     }
 
-    .hero-banner-img {
-      width: 100%;
-      height: auto;
-      max-height: 300px;
-      border-radius: 10px;
+    /* Seções */
+    .hero-section {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 4rem 5%;
+      gap: 2rem;
+      background-color: var(--bg-alt-color);
+    }
+
+    .hero-content {
+      flex: 1;
+    }
+
+    .hero-content h1 {
+      font-size: 2.2rem;
+      margin-bottom: 1rem;
+    }
+
+    .welcome-msg {
+      font-size: 1.1rem;
       margin-bottom: 1.5rem;
-      border: 1px solid rgba(6, 182, 212, 0.3);
     }
 
+    .hero-image {
+      flex: 1;
+      text-align: center;
+    }
+
+    .hero-image img {
+      max-width: 100%;
+      height: auto;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+    }
+
+    .section {
+      padding: 4rem 5%;
+      max-width: 1000px;
+      margin: 0 auto;
+    }
+
+    .bg-alt {
+      background-color: var(--bg-alt-color);
+      max-width: 100%;
+    }
+
+    .section-subtitle {
+      margin-bottom: 2rem;
+      opacity: 0.85;
+    }
+
+    /* Botões */
     .btn-primary {
-      background: linear-gradient(135deg, #06b6d4, #0891b2);
+      display: inline-block;
+      background-color: var(--primary-color);
       color: #ffffff;
       padding: 12px 24px;
       border: none;
       border-radius: 6px;
       cursor: pointer;
+      text-decoration: none;
       font-weight: bold;
       font-size: 1rem;
-      margin-top: 1rem;
     }
 
-    .quiz-question {
-      margin-bottom: 2rem;
-      padding-bottom: 1rem;
-      border-bottom: 1px solid var(--border-color);
+    .btn-primary:hover {
+      background-color: var(--primary-hover);
     }
 
-    .quiz-option {
-      display: block;
-      margin: 0.5rem 0;
-      cursor: pointer;
+    /* Portal de Escuta */
+    .escuta-container form {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 1.5rem;
     }
 
     textarea {
       width: 100%;
-      min-height: 120px;
       padding: 12px;
       border-radius: 6px;
       border: 1px solid var(--border-color);
-      background: rgba(30, 41, 59, 0.5);
+      background: var(--card-bg);
       color: var(--text-color);
       font-family: inherit;
-      margin-bottom: 1rem;
+      resize: vertical;
     }
 
     .card-resposta {
       padding: 15px;
-      background: rgba(6, 182, 212, 0.15);
-      border: 1px solid rgba(6, 182, 212, 0.3);
+      background-color: var(--accent-color);
+      color: #ffffff;
       border-radius: 6px;
-      margin-top: 1rem;
+      margin-bottom: 1.5rem;
     }
 
     .motivational-quotes {
       margin: 2rem 0;
       padding: 1.5rem;
-      border-left: 4px solid #06b6d4;
-      background-color: rgba(6, 182, 212, 0.1);
+      border-left: 4px solid var(--primary-color);
+      background-color: var(--bg-alt-color);
       font-style: italic;
-      border-radius: 0 8px 8px 0;
+    }
+
+    .orientacoes-box {
+      background: var(--card-bg);
+      border: 1px solid var(--border-color);
+      padding: 1.5rem;
+      border-radius: 8px;
+    }
+
+    .orientacoes-box ul {
+      margin-top: 1rem;
+      margin-left: 1.5rem;
+    }
+
+    /* Quiz */
+    .quiz-card {
+      background: var(--card-bg);
+      padding: 2rem;
+      border-radius: 8px;
+      border: 1px solid var(--border-color);
+    }
+
+    .quiz-question {
+      margin-bottom: 1.5rem;
+    }
+
+    .quiz-question h4 {
+      margin-bottom: 0.5rem;
+    }
+
+    .quiz-options label {
+      display: block;
+      margin: 6px 0;
+      cursor: pointer;
+    }
+
+    .quiz-result-box {
+      margin-top: 1.5rem;
+      padding: 1rem;
+      background: var(--accent-color);
+      color: #ffffff;
+      border-radius: 6px;
+      font-weight: bold;
+    }
+
+    /* Referências */
+    .ref-list {
+      margin-left: 1.5rem;
+    }
+
+    .ref-list li {
+      margin-bottom: 0.5rem;
+    }
+
+    .ref-list a {
+      color: var(--primary-color);
+    }
+
+    /* Rodapé */
+    footer {
+      text-align: center;
+      padding: 2rem 5%;
+      background-color: var(--bg-alt-color);
+      border-top: 1px solid var(--border-color);
+    }
+
+    /* Voltar ao Topo */
+    #btn-back-to-top {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      display: none;
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      border: none;
+      background: var(--primary-color);
+      color: #ffffff;
+      font-size: 1.2rem;
+      cursor: pointer;
+      box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    }
+
+    .hidden {
+      display: none !important;
+    }
+
+    /* Responsividade */
+    @media (max-width: 768px) {
+      .hero-section {
+        flex-direction: column;
+      }
+      .navbar {
+        flex-direction: column;
+        gap: 15px;
+      }
+      .nav-links {
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 12px;
+      }
     }
   </style>
 </head>
 <body>
 
-  <div id="splash-screen">
-    <div class="splash-content">
-      <h1>Portal Convivência</h1>
-      <p class="splash-subtitle">Respeito & Empatia na Escola</p>
-      <p>Seja bem-vindo(a)! Digite seu nome abaixo para acessar o portal interativo de reflexão e conscientização.</p>
-      <div class="splash-input-group">
-        <label for="user-name-input">Seu nome:</label>
-        <input id="user-name-input" type="text" placeholder="Digite seu nome..." />
-      </div>
-      <button id="btn-entrar" class="btn-entrar" disabled>Entrar no Portal</button>
-    </div>
-  </div>
-
-  <div class="accessibility-bar">
-    <button id="btn-font-decrease">A-</button>
-    <button id="btn-font-increase">A+</button>
-    <button id="btn-dark-mode">Modo Escuro</button>
-    <button id="btn-high-contrast">Alto Contraste</button>
-  </div>
-
   <header>
+    <div class="accessibility-bar">
+      <button id="btn-contrast" type="button">Alto Contraste</button>
+      <button id="btn-dark" type="button">Modo Escuro</button>
+      <button id="btn-font-increase" type="button" title="Aumentar Fonte">A+</button>
+      <button id="btn-font-decrease" type="button" title="Diminuir Fonte">A-</button>
+    </div>
+    
     <nav class="navbar">
-      <div class="logo">Convivência Escolar</div>
+      <div class="logo">Escola Plural</div>
       <ul class="nav-links">
         <li><a href="#inicio">Início</a></li>
+        <li><a href="#escuta">Portal de Escuta</a></li>
         <li><a href="#quiz">Quiz Interativo</a></li>
-        <li><a href="#desabafo">Espaço Acolher</a></li>
+        <li><a href="#referencias">Referências</a></li>
       </ul>
     </nav>
   </header>
@@ -322,323 +354,223 @@
   <main>
     <section id="inicio" class="hero-section">
       <div class="hero-content">
-        <!-- Ilustração SVG embutida (funciona sem precisar de internet ou arquivos externos) -->
-        <svg class="hero-banner-img" viewBox="0 0 800 300" style="background: #1e293b; display: block; width: 100%; border-radius: 10px;">
-          <rect width="100%" height="100%" fill="#1e293b"/>
-          <circle cx="400" cy="110" r="45" fill="#06b6d4" />
-          <path d="M 330 220 C 330 160, 470 160, 470 220 Z" fill="#06b6d4" />
-          <circle cx="280" cy="130" r="35" fill="#10b981" />
-          <path d="M 225 220 C 225 170, 335 170, 335 220 Z" fill="#10b981" />
-          <circle cx="520" cy="130" r="35" fill="#10b981" />
-          <path d="M 465 220 C 465 170, 575 170, 575 220 Z" fill="#10b981" />
-          <text x="50%" y="265" text-anchor="middle" fill="#f1f5f9" font-size="20" font-weight="bold" font-family="sans-serif">Convivência & Empatia Escolar</text>
-        </svg>
-
-        <h1 id="welcome-heading">Olá, Visitante! 👋</h1>
+        <h1>Combate ao Preconceito na Escola</h1>
         <p class="welcome-msg">
-          Este espaço foi criado para promover a empatia, combater o preconceito e construir um ambiente escolar mais seguro e respeitoso para todos.
+          "Bem-vindo ao Portal de Apoio ao Estudante. Aqui você encontrará informações, orientações e apoio sobre situações vivenciadas no ambiente escolar. Nossa missão é promover o respeito, a diversidade e a empatia."
         </p>
-        <div class="motivational-quotes">
-          "A empatia é a capacidade de ver o mundo com os olhos do outro, ouvir com os ouvidos do outro e sentir com o coração do outro."
-        </div>
+        <a href="#escuta" class="btn-primary">Precisa conversar? Acesse a Escuta</a>
+      </div>
+      <div class="hero-image">
+        <img src="https://images.unsplash.com/photo-1529156069898-49953e39b3ac?auto=format&fit=crop&w=600&q=80" alt="Grupo de estudantes diversos sorrindo juntos">
       </div>
     </section>
 
-    <section id="quiz" class="section">
-      <h2>Quiz de Conscientização</h2>
-      <p class="section-subtitle">Teste seus conhecimentos sobre convivência, respeito e cidadania digital.</p>
+    <section id="escuta" class="section">
+      <h2>Portal de Escuta</h2>
+      <p class="section-subtitle">Este é um espaço seguro e anônimo para você desabafar. Lembre-se: nenhuma informação enviada aqui será salva.</p>
       
-      <div id="quiz-container"></div>
+      <div class="escuta-container">
+        <form id="form-escuta" onsubmit="enviarDesabafo(event)">
+          <label for="desabafo">Escreva o que está sentindo ou vivenciando:</label>
+          <textarea id="desabafo" rows="5" placeholder="Digite seu desabafo aqui..." required></textarea>
+          <button type="submit" class="btn-primary">Enviar Desabafo (Simulação)</button>
+        </form>
 
-      <div id="quiz-actions">
-        <button id="btn-quiz-submit" class="btn-primary">Verificar Respostas</button>
+        <div id="mensagem-resposta" class="card-resposta hidden"></div>
+      </div>
+
+      <div class="motivational-quotes">
+        <blockquote>"Respeitar as diferenças é o primeiro passo para construir um mundo mais justo."</blockquote>
+      </div>
+
+      <div class="orientacoes-box">
+        <h3>Precisa de ajuda real no dia a dia?</h3>
+        <p>Não guarde o sofrimento para você. Procure a ajuda de um adulto de confiança:</p>
+        <ul>
+          <li>Professores de sua confiança</li>
+          <li>Pedagogo(a) ou Orientador(a) educacional</li>
+          <li>Direção da escola</li>
+          <li>Seus pais ou responsáveis</li>
+          <li><strong>Disque 100</strong> (Direitos Humanos - ligação gratuita e anônima)</li>
+        </ul>
       </div>
     </section>
 
-    <section id="desabafo" class="section">
-      <h2>Espaço Acolher</h2>
-      <p class="section-subtitle">Precisa compartilhar algo ou sugerir melhorias para a nossa escola?</p>
+    <section id="quiz" class="section bg-alt">
+      <h2>Quiz Interativo: Respeito e Empatia</h2>
+      <p class="section-subtitle">Teste seus conhecimentos sobre como agir em situações de preconceito e bullying.</p>
 
-      <div id="desabafo-container">
-        <form id="desabafo-form">
-          <textarea id="desabafo-text" placeholder="Escreva sua mensagem aqui (sua participação é importante)..." required></textarea>
-          <button type="submit" class="btn-primary">Enviar Mensagem</button>
-        </form>
+      <div id="quiz-container" class="quiz-card">
+        <div id="quiz-questions"></div>
+        <button id="btn-finalizar-quiz" class="btn-primary" onclick="calcularResultadoQuiz()" type="button">Ver Resultado</button>
+        <div id="quiz-resultado" class="quiz-result-box hidden"></div>
       </div>
+    </section>
+
+    <section id="referencias" class="section">
+      <h2>Referências e Fontes Confiáveis</h2>
+      <p class="section-subtitle">Conteúdos pesquisados em fontes oficiais e especializadas:</p>
+      <ul class="ref-list">
+        <li>
+          <a href="https://www.gov.br/mdh/pt-br" target="_blank" rel="noopener noreferrer">Ministério dos Direitos Humanos e da Cidadania (Gov.br)</a>
+        </li>
+        <li>
+          <a href="https://www.unicef.org/brazil/" target="_blank" rel="noopener noreferrer">UNICEF Brasil - Proteção à Infância e Adolescência</a>
+        </li>
+        <li>
+          <a href="https://safernet.org.br/" target="_blank" rel="noopener noreferrer">SaferNet Brasil - Segurança e Cidadania na Internet</a>
+        </li>
+        <li>
+          <a href="https://www.novo.justica.gov.br/" target="_blank" rel="noopener noreferrer">Cartilha de Combate ao Bullying e Discriminação - Ministério da Justiça</a>
+        </li>
+      </ul>
     </section>
   </main>
 
+  <footer>
+    <p>&copy; 2026 Escola Plural - Projeto de Conscientização e Combate ao Preconceito.</p>
+  </footer>
+
+  <button id="btn-back-to-top" type="button" title="Voltar ao topo">↑</button>
+
   <script>
-    // Dados do Quiz
-    const quizQuestions = [
+    // --- 1. Acessibilidade (Modo Escuro, Alto Contraste e Fonte) ---
+    const btnDark = document.getElementById('btn-dark');
+    const btnContrast = document.getElementById('btn-contrast');
+    const btnFontInc = document.getElementById('btn-font-increase');
+    const btnFontDec = document.getElementById('btn-font-decrease');
+
+    btnDark.addEventListener('click', () => {
+      document.body.classList.remove('high-contrast');
+      document.body.classList.toggle('dark-mode');
+    });
+
+    btnContrast.addEventListener('click', () => {
+      document.body.classList.remove('dark-mode');
+      document.body.classList.toggle('high-contrast');
+    });
+
+    let currentFontSize = 1; // rem
+    btnFontInc.addEventListener('click', () => {
+      if (currentFontSize < 1.3) {
+        currentFontSize += 0.05;
+        document.documentElement.style.setProperty('--font-scale', `${currentFontSize}rem`);
+      }
+    });
+
+    btnFontDec.addEventListener('click', () => {
+      if (currentFontSize > 0.85) {
+        currentFontSize -= 0.05;
+        document.documentElement.style.setProperty('--font-scale', `${currentFontSize}rem`);
+      }
+    });
+
+    // --- 2. Botão Voltar ao Topo ---
+    const backToTopBtn = document.getElementById('btn-back-to-top');
+
+    window.addEventListener('scroll', () => {
+      if (window.scrollY > 300) {
+        backToTopBtn.style.display = 'block';
+      } else {
+        backToTopBtn.style.display = 'none';
+      }
+    });
+
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+
+    // --- 3. Portal de Escuta (Simulação) ---
+    function enviarDesabafo(event) {
+      event.preventDefault();
+      const inputDesabafo = document.getElementById('desabafo');
+      const respostaDiv = document.getElementById('mensagem-resposta');
+
+      if (inputDesabafo.value.trim() !== "") {
+        respostaDiv.innerHTML = `
+          <strong>Agradecemos por compartilhar conosco.</strong><br>
+          Sua mensagem não foi gravada em nenhum banco de dados. Lembre-se: você é importante e nunca está sozinho. 
+          Se precisar, procure um dos adultos de confiança listados abaixo.
+        `;
+        respostaDiv.classList.remove('hidden');
+        inputDesabafo.value = ""; // Limpa o campo
+      }
+    }
+
+    // --- 4. Quiz Interativo (5 Perguntas) ---
+    const perguntasQuiz = [
       {
         pergunta: "1. Fazer piadas recorrentes sobre a aparência física ou religião de um colega é considerado:",
-        opcoes: [
-          {
-            texto: "Brincadeira saudável sem malícia",
-            correta: false,
-            erro: "O erro deste pensamento é achar que 'brincadeira' não machuca. Minimizar ofensas mascara a dor do outro.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Uma brincadeira só é boa quando todos se divertem. Se fere alguém, deixa de ser brincadeira e vira desrespeito.'"
-          },
-          {
-            texto: "Bullying e atitude preconceituosa",
-            correta: true,
-            erro: "",
-            fraseMudanca: "🌟 Excelente reflexão! Identificar o preconceito e o bullying é o primeiro passo para transformar a escola num ambiente acolhedor."
-          },
-          {
-            texto: "Apenas uma opinião pessoal",
-            correta: false,
-            erro: "O erro deste pensamento é confundir liberdade de opinião com o ato de desrespeitar ou humilhar alguém.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Minha liberdade de expressão termina onde começa o direito do outro de ser respeitado.'"
-          }
-        ]
+        opcoes: ["Brincadeira saudável sem malícia", "Bullying e atitude preconceituosa", "Apenas uma opinião pessoal"],
+        correta: 1
       },
       {
         pergunta: "2. Se você presencia alguém sofrendo preconceito na escola, qual é a atitude correta?",
-        opcoes: [
-          {
-            texto: "Ignorar para não se envolver",
-            correta: false,
-            erro: "O erro deste pensamento é achar que o silêncio é neutro. Na verdade, fingir que não viu fortalece o agressor.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Não fazer nada também é uma escolha. Escolha apoiar quem precisa em vez de se omitir.'"
-          },
-          {
-            texto: "Rir com os outros",
-            correta: false,
-            erro: "O erro deste pensamento é buscar aceitação social às custas do sofrimento e humilhação de um colega.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Popularidade de verdade se constrói com empatia e integridade, nunca rindo da dor alheia.'"
-          },
-          {
-            texto: "Acolher a pessoa e avisar um professor ou responsável",
-            correta: true,
-            erro: "",
-            fraseMudanca: "🌟 Excelente reflexão! Estender a mão a quem sofre e acionar um adulto demonstra verdadeira coragem e maturidade."
-          }
-        ]
+        opcoes: ["Ignorar para não se envolver", "Rir com os outros", "Acolher a pessoa e avisar um professor ou responsável"],
+        correta: 2
       },
       {
-        pergunta: "3. Usar nomes ou apelidos pejorativos que deixam o outro desconfortável demonstra respeito?",
-        opcoes: [
-          {
-            texto: "Sim, se for seu amigo",
-            correta: false,
-            erro: "O erro deste pensamento é achar que a amizade dá permissão para ignorar o desconforto e o sentimento do colega.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Amigos verdadeiros cuidam do bem-estar do outro. Se o apelido incomoda, ele deve parar imediatamente.'"
-          },
-          {
-            texto: "Não, é desrespeitoso",
-            correta: true,
-            erro: "",
-            fraseMudanca: "🌟 Excelente reflexão! Chamar as pessoas pelo nome que gostam é um sinal básico e poderoso de respeito mútuo."
-          },
-          {
-            texto: "Apenas se a pessoa responder no mesmo tom",
-            correta: false,
-            erro: "O erro deste pensamento é criar um ciclo de ofensas contínuas mascaradas de 'troca equivalente'.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Agressões recíprocas não trazem respeito, apenas desgastam a convivência. Quebre o ciclo.'"
-          }
-        ]
+        pergunta: "3. Esta atitude demonstra respeito: Usar nomes ou apelidos pejorativos que deixam o outro desconfortável?",
+        opcoes: ["Sim, se for seu amigo", "Não, é desrespeitoso", "Apenas se a pessoa responder no mesmo tom"],
+        correta: 1
       },
       {
         pergunta: "4. Ao criar senhas e dados para usar na rede da escola ou redes sociais, o que é mais seguro?",
-        opcoes: [
-          {
-            texto: "Compartilhar a senha com amigos de confiança",
-            correta: false,
-            erro: "O erro deste pensamento é ingenuidade com a segurança digital. Amizades mudam e senhas vazam facilmente.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Confiança se demonstra com diálogo e amizade, não entregando o acesso à minha vida digital.'"
-          },
-          {
-            texto: "Usar combinações fortes e não compartilhar com ninguém",
-            correta: true,
-            erro: "",
-            fraseMudanca: "🌟 Excelente reflexão! Proteger sua identidade digital evita invasões e o uso indevido do seu nome."
-          },
-          {
-            texto: "Usar sua data de nascimento",
-            correta: false,
-            erro: "O erro deste pensamento é usar dados públicos fáceis de adivinhar por qualquer pessoa.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Uma senha segura exige criatividade e cuidado para garantir minha privacidade online.'"
-          }
-        ]
+        opcoes: ["Compartilhar a senha com amigos de confiança", "Usar combinações fortes e não compartilhar com ninguém", "Usar sua data de nascimento"],
+        correta: 1
       },
       {
         pergunta: "5. O que você faria ao ver um colega isolado no intervalo por conta de preconceito?",
-        opcoes: [
-          {
-            texto: "Aproximaria para conversar e o incluiria no grupo",
-            correta: true,
-            erro: "",
-            fraseMudanca: "🌟 Excelente reflexão! Incluir quem está sozinho é um dos atos de empatia mais transformadores que existem."
-          },
-          {
-            texto: "Esperaria que ele viesse falar comigo",
-            correta: false,
-            erro: "O erro deste pensamento é esperar que quem está acuado ou envergonhado dê o primeiro passo.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Quem sofre preconceito costuma ter receio de rejeição. Dar o primeiro passo é um ato de acolhimento.'"
-          },
-          {
-            texto: "Apostaria que ele prefere ficar sozinho",
-            correta: false,
-            erro: "O erro deste pensamento é supor que o isolamento é uma escolha espontânea, ignorando o impacto da exclusão.",
-            fraseMudanca: "💡 Mude esse pensamento: 'Quase ninguém escolhe a solidão decorrente do preconceito. Um simples convite pode mudar tudo.'"
-          }
-        ]
+        opcoes: ["Aproximaria para conversar e o incluiria no grupo", "Esperaria que ele viesse falar comigo", "Apostaria que ele prefere ficar sozinho"],
+        correta: 0
       }
     ];
 
-    // Estados
-    let fontSize = 1;
-    let darkMode = false;
-    let highContrast = false;
-    let userName = "";
+    function carregarQuiz() {
+      const container = document.getElementById('quiz-questions');
+      if (!container) return;
 
-    // Elementos DOM
-    const splashScreen = document.getElementById('splash-screen');
-    const userNameInput = document.getElementById('user-name-input');
-    const btnEntrar = document.getElementById('btn-entrar');
-    const welcomeHeading = document.getElementById('welcome-heading');
-    const quizContainer = document.getElementById('quiz-container');
-    const btnQuizSubmit = document.getElementById('btn-quiz-submit');
-    const quizActions = document.getElementById('quiz-actions');
+      container.innerHTML = "";
 
-    // Inicializar Entrada de Nome
-    userNameInput.addEventListener('input', (e) => {
-      userName = e.target.value.trim();
-      btnEntrar.disabled = !userName;
-    });
+      perguntasQuiz.forEach((item, index) => {
+        const qDiv = document.createElement('div');
+        qDiv.classList.add('quiz-question');
 
-    userNameInput.addEventListener('keydown', (e) => {
-      if (e.key === 'Enter' && userName) {
-        entrarNoPortal();
-      }
-    });
-
-    btnEntrar.addEventListener('click', entrarNoPortal);
-
-    function entrarNoPortal() {
-      if (userName) {
-        splashScreen.classList.add('fechado');
-        welcomeHeading.textContent = `Olá, ${userName}! 👋`;
-      }
-    }
-
-    // Acessibilidade
-    document.getElementById('btn-font-increase').addEventListener('click', () => {
-      if (fontSize < 1.3) {
-        fontSize += 0.05;
-        document.documentElement.style.setProperty('--font-scale', `${fontSize}rem`);
-      }
-    });
-
-    document.getElementById('btn-font-decrease').addEventListener('click', () => {
-      if (fontSize > 0.85) {
-        fontSize -= 0.05;
-        document.documentElement.style.setProperty('--font-scale', `${fontSize}rem`);
-      }
-    });
-
-    document.getElementById('btn-dark-mode').addEventListener('click', () => {
-      darkMode = !darkMode;
-      document.body.classList.toggle('dark-mode', darkMode);
-      document.getElementById('btn-dark-mode').textContent = darkMode ? "Modo Claro" : "Modo Escuro";
-    });
-
-    document.getElementById('btn-high-contrast').addEventListener('click', () => {
-      highContrast = !highContrast;
-      document.body.classList.toggle('high-contrast', highContrast);
-      document.getElementById('btn-high-contrast').textContent = highContrast ? "Contraste Normal" : "Alto Contraste";
-    });
-
-    // Renderizar Quiz
-    function renderQuiz() {
-      quizContainer.innerHTML = "";
-      quizQuestions.forEach((q, qIndex) => {
-        const questionDiv = document.createElement('div');
-        questionDiv.className = 'quiz-question';
-
-        let html = `<h3>${q.pergunta}</h3>`;
-        q.opcoes.forEach((opcao, oIndex) => {
-          html += `
-            <label class="quiz-option">
-              <input type="radio" name="pergunta-${qIndex}" value="${oIndex}"> ${opcao.texto}
+        let opcoesHtml = "";
+        item.opcoes.forEach((opcao, i) => {
+          opcoesHtml += `
+            <label>
+              <input type="radio" name="q${index}" value="${i}">
+              ${opcao}
             </label>
           `;
         });
-        html += `<div id="resposta-${qIndex}"></div>`;
-        questionDiv.innerHTML = html;
-        quizContainer.appendChild(questionDiv);
+
+        qDiv.innerHTML = `
+          <h4>${item.pergunta}</h4>
+          <div class="quiz-options">${opcoesHtml}</div>
+        `;
+        container.appendChild(qDiv);
       });
     }
 
-    renderQuiz();
-
-    // Submeter Quiz
-    function submitQuiz() {
+    function calcularResultadoQuiz() {
       let acertos = 0;
-
-      quizQuestions.forEach((q, qIndex) => {
-        const selectedOption = document.querySelector(`input[name="pergunta-${qIndex}"]:checked`);
-        const respostaDiv = document.getElementById(`resposta-${qIndex}`);
-
-        if (selectedOption) {
-          const oIndex = parseInt(selectedOption.value, 10);
-          const opcao = q.opcoes[oIndex];
-
-          if (opcao.correta) {
-            acertos++;
-            respostaDiv.innerHTML = `<div class="card-resposta"><p style="color: #10b981;">${opcao.fraseMudanca}</p></div>`;
-          } else {
-            respostaDiv.innerHTML = `
-              <div class="card-resposta">
-                <p style="color: #ef4444;">${opcao.erro}</p>
-                <p>${opcao.fraseMudanca}</p>
-              </div>
-            `;
-          }
+      
+      perguntasQuiz.forEach((item, index) => {
+        const selecionada = document.querySelector(`input[name="q${index}"]:checked`);
+        if (selecionada && parseInt(selecionada.value, 10) === item.correta) {
+          acertos++;
         }
       });
 
-      quizActions.innerHTML = `
-        <h3>Resultado: ${acertos} de ${quizQuestions.length} acertos!</h3>
-        <button id="btn-quiz-reset" class="btn-primary" style="margin-top: 10px;">Refazer Quiz</button>
-      `;
-
-      document.getElementById('btn-quiz-reset').addEventListener('click', resetQuiz);
+      const resultadoBox = document.getElementById('quiz-resultado');
+      resultadoBox.innerHTML = `Você acertou <strong>${acertos}</strong> de <strong>${perguntasQuiz.length}</strong> perguntas!`;
+      resultadoBox.classList.remove('hidden');
     }
 
-    btnQuizSubmit.addEventListener('click', submitQuiz);
-
-    function resetQuiz() {
-      renderQuiz();
-      quizActions.innerHTML = `<button id="btn-quiz-submit" class="btn-primary">Verificar Respostas</button>`;
-      document.getElementById('btn-quiz-submit').addEventListener('click', submitQuiz);
-    }
-
-    // Formulário de Desabafo
-    const desabafoForm = document.getElementById('desabafo-form');
-    const desabafoContainer = document.getElementById('desabafo-container');
-
-    desabafoForm.addEventListener('submit', (e) => {
-      e.preventDefault();
-      desabafoContainer.innerHTML = `
-        <div class="card-resposta">
-          <h3>Obrigado por compartilhar! 💙</h3>
-          <p>Sua mensagem ajuda a tornar nossa comunidade escolar um lugar melhor para todos.</p>
-          <button id="btn-desabafo-reset" class="btn-primary" style="margin-top: 10px;">Enviar outra mensagem</button>
-        </div>
-      `;
-
-      document.getElementById('btn-desabafo-reset').addEventListener('click', () => {
-        desabafoContainer.innerHTML = `
-          <form id="desabafo-form">
-            <textarea id="desabafo-text" placeholder="Escreva sua mensagem aqui (sua participação é importante)..." required></textarea>
-            <button type="submit" class="btn-primary">Enviar Mensagem</button>
-          </form>
-        `;
-      });
-    });
+    // Inicializa o Quiz assim que o DOM estiver carregado
+    document.addEventListener('DOMContentLoaded', carregarQuiz);
   </script>
 </body>
 </html>
